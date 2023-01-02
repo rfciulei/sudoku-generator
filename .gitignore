@@ -6,3 +6,4 @@ out/
 *.exe
 src/cpp/sudokuGen
 puzzles/
+.vscode
