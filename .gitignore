@@ -4,4 +4,5 @@ out/
 *.pdf
 *.rar
 *.exe
+src/cpp/sudokuGen
 puzzles/
