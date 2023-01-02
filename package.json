@@ -1,6 +1,6 @@
 {
   "name": "sudoku-generator",
-  "version": "1.0.0",
+  "version": "0.9.0",
   "description": "app that generates pdfs with lots of sudoku games.",
   "main": "src/main.js",
   "scripts": {
