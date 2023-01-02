@@ -422,7 +422,7 @@ int Sudoku::branchDifficultyScore()
 
   while (emptyPositions != 0)
   {
-    vector<vector<int>> empty;
+    vector< vector<int> > empty;
 
     for (int i = 0; i < 81; i++)
     {
