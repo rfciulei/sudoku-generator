@@ -5,6 +5,7 @@ const fs = require("fs");
 const child_process = require("child_process");
 const spawn = require("child_process").spawn;
 const generatePdf = require("./generatePdf");
+const addon = require('bindings')('sudoku')
 
 let cppDirPath = path.join(__dirname, "cpp");
 let execPath = path.join(cppDirPath, "sudokuGen.exe");
@@ -197,3 +198,6 @@ const log = (string) => {
     }
   );
 };
+
+
+console.log(addon.hello())
