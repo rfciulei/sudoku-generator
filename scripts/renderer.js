@@ -26,13 +26,16 @@ function go() {
     solutions: document.getElementById("solutions").checked,
   };
 
-  //disable button until loader it finished
-  document.getElementById("btnGo").disabled = true;
-
   //send data to main process
   window.api.send("toMain", data);
+
+  /*
+  //disable button until loader it finished
+  document.getElementById("btnGo").disabled = true;
 
   //add the loader
   let loaderHTML = `<div class="loader"><div class="loading_1"></div></div>`;
   document.getElementById("loaderRoot").innerHTML = loaderHTML;
+  */
+
 }

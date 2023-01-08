@@ -1,13 +1,6 @@
+Doesn't compile properly at the moment because clfag c++14 is overwritten by electron-rebuild:
+/Users/$USER/fun/git/sudoku-generator-electronjs/node_modules/@electron/rebuild/lib/src/module-type/node-gyp.js
 
-  # Development 
-  <ul>
-  <li>before running npm start make sure to launch task with label "C/C++: g++.exe build active file". Ctrl+Shift+B is the default keyshorcut in vscode. Also, the development was done on windows only so far so make sure to have all the necesarry DLLs added to the executable if you want to run on another machine can use dumpbin to  see what DLLs it needs </li>
-    <li>can control whether .cpp file is compiled for each pdf generation by changing the variable <code>compile = true</code> in main.js.<br>There's an issue to add this to env.js.</li>
-  </ul>
-   For development: 
-  <ul>
-   <li>npm install </li>
-    <li>npm start  </li>
-  </ul>
-
+Couldn't find any useful docs so:
+For the moment to build the program just comment lines 79-81 so that c++17 flag is not added automatically.
 
