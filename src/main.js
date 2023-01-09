@@ -45,7 +45,7 @@ function createWindow() {
       args.push("0");
     }
     // src/cpp/puzzles dir should be empty for each sudokuGen.exe execution
-    //createOrEmptyPuzzlesDirSync();
+    createOrEmptyPuzzlesDirSync();
     addon.generate_sudoku();
 	win.webContents.send("fromMain", "finished");
     // will build pdf if code return 0
