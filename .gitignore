@@ -9,3 +9,5 @@ puzzles/
 .vscode
 build/
 bin/
+
+.DS_STORE
