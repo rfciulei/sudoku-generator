@@ -214,7 +214,8 @@ void Sudoku::printGrid()
 		for (int j = 0; j < 9; j++)
 		{
 			if (grid[i][j] == 0)
-				cout << ".";
+				//cout << ".";
+				cout << " ";
 			else
 				cout << grid[i][j];
 			cout << "|";
@@ -363,15 +364,17 @@ void Sudoku::genPuzzle()
 void Sudoku::printSVG(int index = 0, int perPage = 1)
 {
 	string fileName;
-	if (perPage == 4)
-		fileName = "resources/svgHead_4_per_page.txt";
-	else if (perPage == 1)
-		fileName = "resources/svgHead_1_per_page.txt";
+	if (perPage == 4){
+		fileName = "./src/cpp/resources/svgHead_4_per_page.txt";
+	} 	else if (perPage == 1) {
+		fileName = "./src/cpp/resources/svgHead_1_per_page.txt";
+	}
+
 	ifstream file1(fileName.c_str());
 	stringstream svgHead;
 	svgHead << file1.rdbuf();
 
-	ofstream outFile("puzzles/puzzle" + to_string(index) + ".svg");
+	ofstream outFile("./src/cpp/puzzles/puzzle" + to_string(index) + ".svg");
 	outFile << svgHead.rdbuf();
 
 	for (int i = 0; i < 9; i++)
