@@ -1,22 +1,10 @@
-// This file is required by the index.html file and will
-// be executed in the renderer process for that window.
-// No Node.js APIs are available in this process because
-// `nodeIntegration` is turned off. Use `preload.js` to
-// selectively enable features needed in the rendering
-// process.
-
-const env = require("../src/env");
-
 window.api.receive("fromMain", (data) => {
-  // console.log("Received " + JSON.stringify(data));
-  if (data === "finished_success") {
+  if (data === "finished") {
     document.getElementById("btnGo").disabled = false;
-    console.log("[FINISHED] : a.exe execution with code SUCCESS ");
-  } else {
-    document.getElementByI;
+    document.getElementById("loaderRoot").innerHTML = "";
   }
-  document.getElementById("loaderRoot").innerHTML = "";
 });
+
 document.getElementById("btnGo").addEventListener("click", go, false);
 
 function go() {
@@ -27,16 +15,10 @@ function go() {
     solutions: document.getElementById("solutions").checked,
   };
 
-  console.log(data);
-  //send data to main process
   window.api.send("toMain", data);
 
-  /*
-  //disable button until loader it finished
   document.getElementById("btnGo").disabled = true;
 
-  //add the loader
   let loaderHTML = `<div class="loader"><div class="loading_1"></div></div>`;
   document.getElementById("loaderRoot").innerHTML = loaderHTML;
-  */
 }

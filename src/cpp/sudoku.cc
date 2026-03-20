@@ -364,7 +364,6 @@ int Sudoku::branchDifficultyScore() {
         }
 
         if (empty.size() == 0) {
-            std::cout << "Hello: " << sum << std::endl;
             return sum;
         }
 
@@ -405,20 +404,16 @@ void Sudoku::calculateDifficulty() {
 Napi::String Main(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
 
-    /*
-            if (argc != 5)
-                    return 0;
-            // ISSUE args not parsed ok
-            int size = atoi(argv[1]);
-            int difficulty = atoi(argv[2]);
-            int perPage = atoi(argv[3]);
-    */
+    if (info.Length() < 4) {
+        Napi::TypeError::New(env, "Expected 4 arguments: numberOfPuzzles, difficulty, perPage, includeSolutions")
+            .ThrowAsJavaScriptException();
+        return Napi::String::New(env, "");
+    }
 
-    // hardcoded for now:
-    int size = 8;
-    int difficulty = 1;
-    int perPage = 4;
-    bool includeSolutions = true;
+    int size = info[0].As<Napi::Number>().Int32Value();
+    int difficulty = info[1].As<Napi::Number>().Int32Value();
+    int perPage = info[2].As<Napi::Number>().Int32Value();
+    bool includeSolutions = info[3].As<Napi::Boolean>().Value();
 
     for (int i = 0; i < size; i++) {
         srand(time(NULL) + i);
@@ -431,15 +426,12 @@ Napi::String Main(const Napi::CallbackInfo& info) {
         delete puzzle;
     }
 
-    return Napi::String::New(env, "world");
+    return Napi::String::New(env, "ok");
 }
 
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
     exports.Set(Napi::String::New(env, "generate_sudoku"),
                 Napi::Function::New(env, Main));
-    //    exports.Set(Napi::String::New(env, "test_method"),
-    //    Napi::Function::New(env, Method2));
-
     return exports;
 }
 

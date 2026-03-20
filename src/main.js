@@ -27,21 +27,15 @@ function createWindow() {
   if (devEnv == true) win.webContents.openDevTools();
 
   ipcMain.on("toMain", (event, data) => {
-    args = new Array();
-    args.push(data.numberOfPuzzles);
-    args.push(data.difficulty);
-    args.push(data.perPage);
-    if (data.solutions) {
-      args.push("1");
-    } else {
-      args.push("0");
-    }
-    // src/cpp/puzzles dir should be empty for each sudokuGen.exe execution
+    const numberOfPuzzles = parseInt(data.numberOfPuzzles, 10);
+    const difficulty = parseInt(data.difficulty, 10);
+    const perPage = parseInt(data.perPage, 10);
+    const includeSolutions = !!data.solutions;
+
     createOrEmptyPuzzlesDirSync();
-    addon.generate_sudoku();
+    addon.generate_sudoku(numberOfPuzzles, difficulty, perPage, includeSolutions);
     win.webContents.send("fromMain", "finished");
-    // will build pdf if code return 0
-    generatePdf(4);
+    generatePdf(perPage);
   });
 }
 
