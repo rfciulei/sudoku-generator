@@ -8,3 +8,6 @@ src/cpp/sudokuGen
 puzzles/
 .vscode
 build/
+bin/
+
+.DS_STORE

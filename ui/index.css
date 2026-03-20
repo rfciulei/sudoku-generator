@@ -1,0 +1,165 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1a1e23;
+  color: #e0e0e0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  background: #252a30;
+  border-radius: 16px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #00b295;
+  margin-bottom: 1.8rem;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #8a9199;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.4rem;
+}
+
+.form-group input[type="text"],
+.form-group select {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  background: #1a1e23;
+  border: 1px solid #3a4149;
+  border-radius: 8px;
+  color: #e0e0e0;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.form-group input[type="text"]:focus,
+.form-group select:focus {
+  border-color: #00b295;
+}
+
+.form-group select {
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a9199' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  padding-right: 2rem;
+}
+
+.form-group select option {
+  background: #252a30;
+  color: #e0e0e0;
+}
+
+.form-hint {
+  font-size: 0.75rem;
+  color: #5a6370;
+  margin-top: 0.25rem;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.6rem;
+}
+
+.checkbox-group label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #8a9199;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #00b295;
+  cursor: pointer;
+}
+
+button#btnGo {
+  width: 100%;
+  padding: 0.75rem;
+  background: #00b295;
+  color: #1a1e23;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  letter-spacing: 0.02em;
+}
+
+button#btnGo:hover {
+  background: #00c9a7;
+}
+
+button#btnGo:active {
+  transform: scale(0.98);
+}
+
+#loaderRoot {
+  margin-top: 1.2rem;
+}
+
+.loader .loading_1 {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background: #1a1e23;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.loader .loading_1:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #00b295, #00c9a7);
+  border-radius: 6px;
+  animation: load 1s linear infinite;
+}
+
+@keyframes load {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
