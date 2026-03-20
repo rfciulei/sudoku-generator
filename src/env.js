@@ -1,4 +1,4 @@
-import path from "node:path"
+const path = require("path");
 
 module.exports = {
   devEnv: process.env.NODE_ENV === "development",
