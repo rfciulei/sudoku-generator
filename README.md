@@ -1,6 +1,27 @@
-Doesn't compile properly at the moment because clfag c++14 is overwritten by electron-rebuild:<br>
-`.../node_modules/@electron/rebuild/lib/src/module-type/node-gyp.js`
+# Sudoku Generator
 
-Couldn't find any useful docs so:<br>
-For the moment to build the program just comment lines `79-81` in the previously mentioned file so that c++17 flag is not added automatically.
+Electron app that generates PDFs with sudoku puzzles.
+Uses a C++ native addon (N-API) for puzzle generation.
+
+## Prerequisites
+
+- macOS (only platform tested currently)
+- Node.js 16.14+
+- Python 3.x
+
+## Development
+
+```bash
+./dev.sh
+```
+
+This installs dependencies, builds the native addon for Electron, and launches the app with DevTools enabled.
+
+## Release Build
+
+```bash
+./build.sh
+```
+
+Output goes to `out/make/`.
 
