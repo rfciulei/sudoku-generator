@@ -6,55 +6,49 @@
     <link rel="stylesheet" type="text/css" href="index.css" />
   </head>
   <body>
-    <table>
-      <tr>
-        <td>Number of puzzles:</td>
-        <td colspan="2">
-          <input
-            type="text"
-            id="numberOfPuzzles"
-            size="2"
-            maxlength="4"
-            value="1"
-          />
-          (maximum 1000)
-        </td>
-      </tr>
-      <tr>
-        <td>Puzzles per page:</td>
-        <td colspan="2">
-          <select id="perPage">
-            <option value="1">1</option>
-            <option value="4">4</option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <td>Difficulty:</td>
-        <td colspan="2">
-          <select id="difficulty" name="difficulty">
-            <option value="0">Random</option>
-            <option value="1">Easy</option>
-            <option value="2">Medium</option>
-            <option value="3">Hard</option>
-            <option value="4">Very hard</option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <td>Include solutions:</td>
-        <td><input type="checkbox" id="solutions" name="solutions" /></td>
-      </tr>
-      <tr>
-        <td><button id="btnGo">Generate puzzles</button></td>
-      </tr>
-      <tr>
-        <td>
-          <br />
-          <div id="loaderRoot"></div>
-        </td>
-      </tr>
-    </table>
+    <div class="container">
+      <h1>Sudoku Generator</h1>
+
+      <div class="form-group">
+        <label for="numberOfPuzzles">Number of puzzles</label>
+        <input
+          type="text"
+          id="numberOfPuzzles"
+          size="2"
+          maxlength="4"
+          value="1"
+        />
+        <div class="form-hint">Maximum 1000</div>
+      </div>
+
+      <div class="form-group">
+        <label for="perPage">Puzzles per page</label>
+        <select id="perPage">
+          <option value="1">1</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="difficulty">Difficulty</label>
+        <select id="difficulty" name="difficulty">
+          <option value="0">Random</option>
+          <option value="1">Easy</option>
+          <option value="2">Medium</option>
+          <option value="3">Hard</option>
+          <option value="4">Very hard</option>
+        </select>
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="solutions" name="solutions" />
+        <label for="solutions">Include solutions</label>
+      </div>
+
+      <button id="btnGo">Generate puzzles</button>
+
+      <div id="loaderRoot"></div>
+    </div>
     <script src="./scripts/renderer.js"></script>
   </body>
 </html>

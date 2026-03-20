@@ -59,5 +59,8 @@
             ]
         }
     },
-    "gypfile": true
+    "gypfile": true,
+    "overrides": {
+        "node-gyp": "^10.3.1"
+    }
 }

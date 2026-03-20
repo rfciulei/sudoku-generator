@@ -5,7 +5,7 @@ const fs = require("fs");
 const child_process = require("child_process");
 const spawn = require("child_process").spawn;
 const generatePdf = require("./generatePdf");
-const addon = require('bindings')('sudoku')
+const addon = require("bindings")("sudoku");
 
 let cppDirPath = path.join(__dirname, "cpp");
 let execPath = path.join(cppDirPath, "sudokuGen.exe");
@@ -15,12 +15,11 @@ let devEnv = false;
 // TO-DO -> link dll's to exe file before release
 let compile = true;
 
-
 function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
-    width: 400,
-    height: 280,
+    width: 480,
+    height: 580,
     // frame: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
@@ -47,7 +46,7 @@ function createWindow() {
     // src/cpp/puzzles dir should be empty for each sudokuGen.exe execution
     createOrEmptyPuzzlesDirSync();
     addon.generate_sudoku();
-	win.webContents.send("fromMain", "finished");
+    win.webContents.send("fromMain", "finished");
     // will build pdf if code return 0
     generatePdf(4);
   });
@@ -82,4 +81,3 @@ app.whenReady().then(() => {
 app.on("window-all-closed", function () {
   app.quit();
 });
-
