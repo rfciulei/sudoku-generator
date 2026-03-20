@@ -20,7 +20,7 @@ function createWindow() {
   });
 
   // and load the index.html of the app.
-  win.loadFile("index.html");
+  win.loadFile(path.join(__dirname, "..", "ui", "index.html"));
   // no menu bar
   win.setMenuBarVisibility(false);
   // Open the DevTools.
