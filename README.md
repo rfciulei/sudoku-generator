@@ -1,6 +1,7 @@
 # Sudoku Generator
 
 <img src="docs/poc.png" alt="Screenshot" width="400" align="left">
+<br>
 
 Electron app that generates PDFs with sudoku puzzles.
 Uses a C++ native addon (N-API) for puzzle generation.
