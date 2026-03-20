@@ -1,3 +1,5 @@
+#include "sudoku.h"
+
 #include <napi.h>
 
 #include <algorithm>
@@ -6,34 +8,6 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include <string>
-#include <vector>
-
-#define UNASSIGNED 0
-
-class Sudoku {
-   private:
-    int grid[9][9];
-    int solnGrid[9][9];
-    int guessNum[9];
-    int gridPos[81];
-    int difficultyLevel;
-    bool grid_status;
-
-   public:
-    Sudoku();
-    Sudoku(std::string, bool row_major = true);
-    void createSeed();
-    void printGrid();
-    bool solveGrid();
-    std::string getGrid();
-    void countSoln(int& number);
-    void genPuzzle();
-    bool verifyGridStatus();
-    void printSVG(int, int);
-    void calculateDifficulty();
-    int branchDifficultyScore();
-};
 
 // START: Get grid as string in row major order
 std::string Sudoku::getGrid() {
@@ -364,6 +338,7 @@ int Sudoku::branchDifficultyScore() {
         }
 
         if (empty.size() == 0) {
+            std::cout << "Hello: " << sum << std::endl;
             return sum;
         }
 
