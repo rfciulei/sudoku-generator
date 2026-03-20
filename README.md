@@ -1,6 +1,6 @@
 # Sudoku Generator
 
-<img src="docs/poc.png" alt="Screenshot" width="400" align="left">
+<img src="docs/poc.png" alt="Screenshot" width="400">
 <br>
 
 Electron app that generates PDFs with sudoku puzzles.
