@@ -23,5 +23,6 @@ This installs dependencies, builds the native addon for Electron, and launches t
 ./build.sh
 ```
 
-Output goes to `out/make/`.
+Output goes to `out/make/`
 
+<img src="docs/screenshot.png" alt="Screenshot" width="400" align="left">
