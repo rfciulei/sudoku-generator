@@ -12,8 +12,10 @@ function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
     width: 480,
-    height: 580,
-    // frame: false,
+    height: 520,
+    resizable: false,
+    titleBarStyle: "hiddenInset",
+    backgroundColor: "#1a1e23",
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
@@ -33,7 +35,12 @@ function createWindow() {
     const includeSolutions = !!data.solutions;
 
     createOrEmptyPuzzlesDirSync();
-    addon.generate_sudoku(numberOfPuzzles, difficulty, perPage, includeSolutions);
+    addon.generate_sudoku(
+      numberOfPuzzles,
+      difficulty,
+      perPage,
+      includeSolutions,
+    );
     win.webContents.send("fromMain", "finished");
     generatePdf(perPage);
   });
