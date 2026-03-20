@@ -11,8 +11,6 @@
 
 #define UNASSIGNED 0
 
-using namespace std;
-
 class Sudoku {
    private:
     int grid[9][9];
@@ -24,11 +22,11 @@ class Sudoku {
 
    public:
     Sudoku();
-    Sudoku(string, bool row_major = true);
+    Sudoku(std::string, bool row_major = true);
     void createSeed();
     void printGrid();
     bool solveGrid();
-    string getGrid();
+    std::string getGrid();
     void countSoln(int& number);
     void genPuzzle();
     bool verifyGridStatus();
@@ -38,11 +36,11 @@ class Sudoku {
 };
 
 // START: Get grid as string in row major order
-string Sudoku::getGrid() {
-    string s = "";
+std::string Sudoku::getGrid() {
+    std::string s = "";
     for (int row_num = 0; row_num < 9; ++row_num) {
         for (int col_num = 0; col_num < 9; ++col_num) {
-            s = s + to_string(grid[row_num][col_num]);
+            s = s + std::to_string(grid[row_num][col_num]);
         }
     }
 
@@ -51,7 +49,6 @@ string Sudoku::getGrid() {
 
 // START: Generate random number
 int genRandNum(int maxLimit) { return rand() % maxLimit; }
-// END: Generate random number
 
 // START: Create seed grid
 void Sudoku::createSeed() {
@@ -64,7 +61,6 @@ void Sudoku::createSeed() {
         }
     }
 }
-// END: Create seed grid
 
 // START: Intialising
 Sudoku::Sudoku() {
@@ -94,10 +90,9 @@ Sudoku::Sudoku() {
 
     grid_status = true;
 }
-// END: Initialising
 
 // START: Custom Initialising with grid passed as argument
-Sudoku::Sudoku(string grid_str, bool row_major) {
+Sudoku::Sudoku(std::string grid_str, bool row_major) {
     if (grid_str.length() != 81) {
         grid_status = false;
         return;
@@ -162,31 +157,29 @@ Sudoku::Sudoku(string grid_str, bool row_major) {
         this->guessNum[i] = i + 1;
     }
 
-    random_shuffle(this->guessNum, (this->guessNum) + 9, genRandNum);
+    std::random_shuffle(this->guessNum, (this->guessNum) + 9, genRandNum);
 
     grid_status = true;
 }
-// END: Custom Initialising
 
 // START: Verification status of the custom grid passed
 bool Sudoku::verifyGridStatus() { return grid_status; }
-// END: Verification of the custom grid passed
 
 // START: Printing the grid
 void Sudoku::printGrid() {
     for (int i = 0; i < 9; i++) {
-        cout << "|";
+        std::cout << "|";
         for (int j = 0; j < 9; j++) {
             if (grid[i][j] == 0)
                 // cout << ".";
-                cout << " ";
+                std::cout << " ";
             else
-                cout << grid[i][j];
-            cout << "|";
+                std::cout << grid[i][j];
+            std::cout << "|";
         }
-        cout << endl;
+        std::cout << std::endl;
     }
-    cout << endl;
+    std::cout << std::endl;
 }
 // END: Printing the grid
 
@@ -232,7 +225,6 @@ bool isSafe(int grid[9][9], int row, int col, int num) {
            !UsedInBox(grid, row - row % 3, col - col % 3, num);
 }
 
-// END: Helper functions for solving grid
 
 // START: Modified Sudoku solver
 bool Sudoku::solveGrid() {
@@ -258,7 +250,6 @@ bool Sudoku::solveGrid() {
 
     return false;  // this triggers backtracking
 }
-// END: Modified Sudoku Solver
 
 // START: Check if the grid is uniquely solvable
 void Sudoku::countSoln(int& number) {
@@ -278,7 +269,6 @@ void Sudoku::countSoln(int& number) {
         this->grid[row][col] = UNASSIGNED;
     }
 }
-// END: Check if the grid is uniquely solvable
 
 // START: Gneerate puzzle
 void Sudoku::genPuzzle() {
@@ -296,22 +286,21 @@ void Sudoku::genPuzzle() {
         }
     }
 }
-// END: Generate puzzle
 
 // START: Printing into SVG file
 void Sudoku::printSVG(int index = 0, int perPage = 1) {
-    string fileName;
+    std::string fileName;
     if (perPage == 4) {
         fileName = "./src/cpp/resources/svgHead_4_per_page.txt";
     } else if (perPage == 1) {
         fileName = "./src/cpp/resources/svgHead_1_per_page.txt";
     }
 
-    ifstream file1(fileName.c_str());
-    stringstream svgHead;
+    std::ifstream file1(fileName.c_str());
+    std::stringstream svgHead;
     svgHead << file1.rdbuf();
 
-    ofstream outFile("./src/cpp/puzzles/puzzle" + to_string(index) + ".svg");
+    std::ofstream outFile("./src/cpp/puzzles/puzzle" + std::to_string(index) + ".svg");
     outFile << svgHead.rdbuf();
 
     for (int i = 0; i < 9; i++) {
@@ -321,7 +310,7 @@ void Sudoku::printSVG(int index = 0, int perPage = 1) {
                     float x = 72.22 * (float)j + 23.1104;
                     float y = 72.22 * (float)i + 50.554;
 
-                    stringstream text;
+                    std::stringstream text;
                     text << "<text x=\"" << x << "\" y=\"" << y
                          << "\" style=\"font-weight:bold\" font-size=\"30px\">"
                          << this->grid[i][j] << "</text>\n";
@@ -331,7 +320,7 @@ void Sudoku::printSVG(int index = 0, int perPage = 1) {
                     float xf = 38.8885 * (float)j + 12.44432;
                     float yf = 38.8885 * (float)i + 27.22195;
 
-                    stringstream text;
+                    std::stringstream text;
                     text << "<text x=\"" << xf << "\" y=\"" << yf
                          << "\" style=\"font-weight:bold\" "
                             "font-size=\"23.3331px\">"
@@ -341,13 +330,8 @@ void Sudoku::printSVG(int index = 0, int perPage = 1) {
             }
         }
     }
-
-    // outFile << "<text x=\"50\" y=\"500\" style=\"font-weight:bold\"
-    // font-size=\"15px\">Difficulty Level (0 being easiest): "
-    // <<this->difficultyLevel<<"</text>\n";
     outFile << "</svg>";
 }
-// END: Printing into SVG file
 
 // START: Calculate branch difficulty score
 int Sudoku::branchDifficultyScore() {
@@ -362,11 +346,11 @@ int Sudoku::branchDifficultyScore() {
     }
 
     while (emptyPositions != 0) {
-        vector<vector<int> > empty;
+        std::vector<std::vector<int> > empty;
 
         for (int i = 0; i < 81; i++) {
             if (tempGrid[(int)(i / 9)][(int)(i % 9)] == 0) {
-                vector<int> temp;
+                std::vector<int> temp;
                 temp.push_back(i);
 
                 for (int num = 1; num <= 9; num++) {
@@ -380,7 +364,7 @@ int Sudoku::branchDifficultyScore() {
         }
 
         if (empty.size() == 0) {
-            cout << "Hello: " << sum << endl;
+            std::cout << "Hello: " << sum << std::endl;
             return sum;
         }
 
@@ -403,7 +387,6 @@ int Sudoku::branchDifficultyScore() {
 
     return sum;
 }
-// END: Finish branch difficulty score
 
 // START: Calculate difficulty level of current grid
 void Sudoku::calculateDifficulty() {
@@ -418,7 +401,6 @@ void Sudoku::calculateDifficulty() {
 
     this->difficultyLevel = B * 100 + emptyCells;
 }
-// END: calculating difficulty level
 
 Napi::String Main(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();

@@ -6,14 +6,7 @@ const child_process = require("child_process");
 const spawn = require("child_process").spawn;
 const generatePdf = require("./generatePdf");
 const addon = require("bindings")("sudoku");
-
-let cppDirPath = path.join(__dirname, "cpp");
-let execPath = path.join(cppDirPath, "sudokuGen.exe");
-
-//these should've been in an env.js file
-let devEnv = false;
-// TO-DO -> link dll's to exe file before release
-let compile = true;
+const { devEnv } = require("./env");
 
 function createWindow() {
   // Create the browser window.

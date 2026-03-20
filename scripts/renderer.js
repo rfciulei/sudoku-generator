@@ -5,14 +5,15 @@
 // selectively enable features needed in the rendering
 // process.
 
+const env = require("../src/env");
+
 window.api.receive("fromMain", (data) => {
   // console.log("Received " + JSON.stringify(data));
   if (data === "finished_success") {
     document.getElementById("btnGo").disabled = false;
     console.log("[FINISHED] : a.exe execution with code SUCCESS ");
   } else {
-    document.getElementById("btnGo").disabled = false;
-    console.log("[FINISHED] : a.exe execution with code FAIL");
+    document.getElementByI;
   }
   document.getElementById("loaderRoot").innerHTML = "";
 });
@@ -26,6 +27,7 @@ function go() {
     solutions: document.getElementById("solutions").checked,
   };
 
+  console.log(data);
   //send data to main process
   window.api.send("toMain", data);
 
@@ -37,5 +39,4 @@ function go() {
   let loaderHTML = `<div class="loader"><div class="loading_1"></div></div>`;
   document.getElementById("loaderRoot").innerHTML = loaderHTML;
   */
-
 }
